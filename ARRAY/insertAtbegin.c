@@ -15,7 +15,7 @@ printf("Enter element to insert");
 int n;
 scanf("%d",&n);
 getchar();// to consume previous new line we get after putting value and press enter
-          //(as it still in input buffer)
+        //(as it still in input buffer)
 printf("do you want to maintain order or array Y/N");
 scanf("%c",&ch);
 if(ch=='y'){
