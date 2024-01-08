@@ -11,19 +11,19 @@ int main() {
     }
 
     int start = 0;
-    int end = s;
+    int end = s-1;
     int key = 71;
 
-    while (start < end) {
+    while (start <= end) {
         int mid = (start + end) / 2;
 
         if (arr[mid] == key) {
             printf("Key found at index %d\n", mid);
             break;  // Add break to exit the loop when the key is found
         } else if (arr[mid] < key) {
-            start = mid;  // Adjust start index
+            start = mid+1;  // Adjust start index
         } else {
-            end = mid;  // Adjust end index
+            end = mid-1;  // Adjust end index
         }
     }
 
