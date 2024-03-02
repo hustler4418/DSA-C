@@ -5,14 +5,15 @@ struct node{     // self referencing structure
     int data;
     struct node *link;
 };
-struct node* insertion_at_begining(struct node* head,int data){
-struct node* ptr=malloc(sizeof(struct node));
-ptr->data=data;
-ptr->link=NULL;
-ptr->link=head;
-head=ptr;
-return head;
+
+void insertion_at_begining(struct node **head,int info){
+  struct node *temp=NULL;
+  temp=malloc(sizeof(struct node));
+  temp->data=info;
+  temp->link=*head;
+  *head=temp;
 }
+
 void print(struct node* head){
   struct node* ptr=head;
   while(ptr!=NULL){
@@ -20,6 +21,7 @@ void print(struct node* head){
     ptr=ptr->link;
   }
 }
+
 
 int main() {
     struct node *head=NULL;
@@ -36,8 +38,11 @@ int main() {
     current->data=135;
     current->link=NULL;
     head->link->link=current;
-    int data=5;
-    head=insertion_at_begining(head,data);
+    
+    insertion_at_begining(&head,324);
+  
+    printf("\n");
     print(head);
+    
 return 0;
 }
