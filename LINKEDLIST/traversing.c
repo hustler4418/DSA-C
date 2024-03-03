@@ -9,7 +9,6 @@ typedef struct node{     // self referencing structure
 void traverse(node *head){
     if(head==NULL){
         printf("no list is available");
-
     }
     //node *ptr=head;
     while(head!=NULL){
