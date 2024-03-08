@@ -15,7 +15,8 @@ tail->next=tail;
 return tail;
 }
 
-node *insert_at_beg(node *tail,int data){
+
+node *insert_at_end(node *tail,int data){
     node *newp=addToempty(data);
     if(tail==NULL){
         printf("Empty linklist");
@@ -24,8 +25,9 @@ node *insert_at_beg(node *tail,int data){
     node *temp=tail->next;
     newp->next=temp;
     newp->prev=tail;
-    temp->prev=newp;
     tail->next=newp;
+    tail->prev=newp;
+    tail=newp;
     return tail;
 }
 
@@ -40,8 +42,9 @@ void traverse(node *tail){
 int main() {
 node *tail=malloc(sizeof(node));
 tail=addToempty(45);
-tail=insert_at_beg(tail,90);
-tail=insert_at_beg(tail,135);
+tail=insert_at_end(tail,90);
+tail=insert_at_end(tail,90*2);
+
 traverse(tail);
 return 0;
 }
