@@ -65,6 +65,6 @@ int main() {
     insert_at_end(head,90);
     insert_at_end(head,135);
     insert_at_end(head,180);
-    del_at_pos(&head,1);
+    del_at_pos(&head,2);
     traverse(head);
 }

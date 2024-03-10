@@ -21,15 +21,6 @@ void traverse(node *tail){
     }while(p!=tail->link);
 }
 
-void countnode(node *tail){
-    node *ptr=tail->link;
-    int count=0;
-    do{
-      count++;
-      ptr=ptr->link;
-    }while(ptr!=tail->link);
-    printf("%d",count);
-}
 
 node *insert_end(node *tail,int data){
     node *newp=malloc(sizeof(node));
@@ -41,19 +32,7 @@ node *insert_end(node *tail,int data){
     return tail;
 }
 
-node *del_at_pos(node *tail,int pos){
-    node *temp=tail->link,*temp2;
-    int i=1;
-    while(i!=pos){
-        temp=temp->link;
-        i++; 
-    }
-    temp2=temp->link;
-    temp->link=temp2->link;
-    free(temp2);
-    temp2=NULL;
-    return tail;
-}
+
 
 
 void search_element(node *tail,int element){
@@ -65,9 +44,10 @@ void search_element(node *tail,int element){
         }
         ptr=ptr->link;
         node++;
-    }while(ptr!=tail->link)
+    }while(ptr!=tail->link);
 
 }
+
 int main() {
 int data=655;   
 node *tail=malloc(sizeof(node));
@@ -77,7 +57,7 @@ tail=insert_end(tail,999);  // 2nd node
 tail=insert_end(tail,569);  // 3rd node
 tail=insert_end(tail,239);  // 4th node
 
-countnode(tail);
+search_element(tail,569);
 
 return 0;
 }
