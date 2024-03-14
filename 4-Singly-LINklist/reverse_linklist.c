@@ -1,4 +1,4 @@
-#include<stdio.h>       //deletion node at specific position
+#include<stdio.h>
 #include<stdlib.h>
 
 typedef struct node{
@@ -33,23 +33,24 @@ void traverse(node *head){
     }
 }
 
-void delete_all(node **head) {
-    node * ptr=*head;
-    while(ptr!=NULL){
-        ptr=ptr->link;
-        free(*head);
-        *head=ptr;
+void reverse(node **head){
+    node *ptr=NULL,*ptr2=NULL;
+    while(*head!=NULL){
+     ptr=(*head)->link;
+     (*head)->link=ptr2;
+     ptr2=*head;
+     *head=ptr;
     }
+    *head=ptr;
 }
 
-
-int main() {
+int main(){
     node *head=malloc(sizeof(node));
     head->data=45;
     head->link=NULL;
     insert_at_end(head,90);
     insert_at_end(head,135);
     insert_at_end(head,180);
-    delete_all(&head);
+    reverse(&head);
     traverse(head);
 }
