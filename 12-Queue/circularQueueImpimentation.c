@@ -8,7 +8,7 @@ int front=-1;
 int rear=-1;
 
 int isfull(){
-    if(front==0 && rear==MAX-1 ||front==rear+1){
+    if((front==0 && rear==MAX-1) ||(front==rear+1)){
         return 1;
     }
     else
@@ -28,12 +28,14 @@ void enqueue(int data){
 if(isfull()){
     printf("queue overflow");
     exit(1);
+  
 }
 if(front==-1){
-    front++;
+    front=0;
 }
-if(rear=MAX-1){
+if(rear==MAX-1){
     rear=0;
+    cqueue[rear]=data;
 }
 else{
     rear=rear+1;
@@ -52,7 +54,7 @@ data=cqueue[front];
 if(front==rear) {// if there is only one element in queue
 front=rear=-1;
 } 
-else if(front=MAX-1){  // fot reaching to first index
+else if(front==MAX-1){  // fot reaching to first index
     front=0;
 }
 else{
@@ -71,11 +73,40 @@ return cqueue[front];
 
 
 
+void print(){
+    int temp;
+    if(isempty()){
+        printf("queue underflow \n");
+        exit(1);
+    }
+    temp=front;
+    if(front<=rear){
+        while(temp<=rear){
+            printf("%d ",cqueue[temp]);
+            temp++;
+        }
+    }
+    else{
+        while(temp<=MAX-1){
+            printf("%d ",cqueue[temp]);
+            temp++;
+        }
+        temp=0;
+        while(temp<=rear){
+            printf("%d ",cqueue[temp]);
+            temp++;
+        }
+    }
+    printf("\n");
+}
+
+
 int main(){
     int choice,data;
     
     while(true){
-        
+    printf("Enter choice \n");
+    scanf("%d",&choice);
     switch (choice)
     {
     case 1:printf("enter value to be inserted");
@@ -83,13 +114,13 @@ int main(){
            enqueue(data);
            break;
     case 2:data=dequeue();
-           printf("deleted value is %d ",data);
+           printf("\n deleted value is %d ",data);
            break;
-    case 3:printf("first value is %d",peek());
+    case 3:printf(" \nfirst value is %d",peek());
            break;
     case 4:print();
            break;
-    default :printf("wrong choice");
+    default :printf("\n wrong choice");
     }
     }
 }
