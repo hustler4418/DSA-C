@@ -29,28 +29,22 @@ void enqueue(int data,int priority){
         front=newnode;
     }
     
-    else if(priority>front->priority){
-          while(temp->link !=NULL &&temp->link->priority<priority){
-            temp=temp->link;
-          }
-          newnode->link=temp->link;
-          temp->link=newnode;
+    else {
+    // Find the insertion point
+    while (temp->link != NULL && temp->link->priority <= priority) {
+        // If next node has the same priority but greater data, stop here.
+        if (temp->link->priority == priority && temp->link->data > data) {
+            break;
+        }
+        temp = temp->link;
     }
-    else{                                // if the priority is same
-          while(temp->link!=NULL){
-            if(temp->link->priority==priority &&(temp->link->data)>data){
-               newnode->link=temp->link;
-               temp->link=newnode;
-            }
-            else{  
-                newnode->link=temp->link->link;
-                temp->link->link=newnode;
-            }
-            temp=temp->link;
-    }
+    // Insert the new node
+    newnode->link = temp->link;
+    temp->link = newnode;
+}
 }
 
-}
+
 int dequeue(){
     node *temp=front;
     if(isempty()){
