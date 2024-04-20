@@ -16,7 +16,17 @@ node * createTree(int data){
     return newnode;
    }
 
-node *callComplete(){
+void inordeTraverse(node *root){
+    if(root==NULL){
+        return;
+    }
+    inordeTraverse(root->left);
+    printf("%d ",root->data);
+    inordeTraverse(root->right);
+}
+
+
+node *callFull(){
 node *root=createTree(50);
 root->left=createTree(60);
 root->right=createTree(70);
@@ -24,12 +34,14 @@ root->left->left=createTree(79);
 root->left->right=createTree(90);
 root->right->left=createTree(123);
 root->right->right=createTree(343);
-root->left->left->left=createTree(566);
+root->left->right->left=createTree(566);
+root->left->right->right=createTree(565);
 return root;
 }
 
 int main() {
-node *root=callComplete();
+node *root=callFull();
+inordeTraverse(root);
 
 return 0;
 }

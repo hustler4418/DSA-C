@@ -16,7 +16,7 @@ node * createTree(int data){
     return newnode;
    }
 
-void callFull(){
+node *callFull(){
 node *root=createTree(50);
 root->left=createTree(60);
 root->right=createTree(70);
@@ -26,10 +26,11 @@ root->right->left=createTree(123);
 root->right->right=createTree(343);
 root->left->right->left=createTree(566);
 root->left->right->right=createTree(566);
+return root;
 }
 
 int main() {
-callFull();
+node *root=callFull();
 
 return 0;
 }
